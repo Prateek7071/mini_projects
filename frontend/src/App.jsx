@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import './App.css'
 import axios from 'axios';
-import { useEffect } from 'react';
 
 function App() {
   
@@ -10,19 +9,20 @@ function App() {
   useEffect(() => {
     axios.get("/api/joke")
       .then((res) => {
+        console.log(res.data);
         setJokes(res.data)
       })
       .catch((error) => {
         console.log(error)
       })
-  }, [])
+  },[])
 
   return (
     <>
       <h1>Fullstack</h1>
-      <p>Jokes: { jokes.length }</p>
+      <p>Jokes: { jokes.length } </p>
       {
-        jokes.map((joke) => {
+        jokes.map((joke) => (
           <div key={joke.id}>
             <h3>
               {joke.title}
@@ -31,7 +31,7 @@ function App() {
               {joke.content}
             </p>
           </div>
-        })
+        ))
       }
     </>
   )
