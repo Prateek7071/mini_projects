@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 console.log(port);
 
 
-app.get('/joke', (req, res) => {
+app.get('/api/joke', (req, res) => {
   const jokes = [
     {
       id: 1,
